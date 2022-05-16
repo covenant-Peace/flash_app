@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "843823690709",
+    "project_id": "flash-chat-e9e3a",
+    "storage_bucket": "flash-chat-e9e3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843823690709:android:406965417bffb948e7435c",
+        "android_client_info": {
+          "package_name": "com.olubunmipeace.flash_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843823690709-a6fb5mv4nvve130j1mdjmu6vfucvph4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdTki5Qj2Ed69aELbPFJ4kvhutlOMlqnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843823690709-a6fb5mv4nvve130j1mdjmu6vfucvph4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
