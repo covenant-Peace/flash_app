@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
-import 'package:flash_app/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash_app/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:swipe_to/swipe_to.dart';
 
 final _firestore = FirebaseFirestore.instance;
 User loggedInUser;
@@ -79,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: kMessageTextFieldDecoration,
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       final date = DateTime.now();
                       final time = "${date.hour}:${date.minute}";
@@ -112,6 +112,7 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessagesStream extends StatelessWidget {
+  // final ValueChanged<Messa>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -128,17 +129,20 @@ class MessagesStream extends StatelessWidget {
           );
         }
         final messages = snapshot.data.docs;
-        List<MessageBubble> messageBubbles = [];
+        List<SwipeTo> messageBubbles = [];
         for (var message in messages) {
           final messageText = message['text'];
           final messageSender = message['sender'];
 
           final currentUser = loggedInUser.email;
 
-          final messageBubble = MessageBubble(
+          final messageBubble = SwipeTo(
+            // onRightSwipe: ()=>onSwipedMessage(messageText),
+              child: MessageBubble(
             sender: messageSender,
             text: messageText,
             isMe: currentUser == messageSender,
+          )
           );
 
           messageBubbles.add(messageBubble);
@@ -153,6 +157,7 @@ class MessagesStream extends StatelessWidget {
       },
     );
   }
+
 }
 
 class MessageBubble extends StatelessWidget {
