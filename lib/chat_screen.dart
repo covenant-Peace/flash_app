@@ -129,20 +129,17 @@ class MessagesStream extends StatelessWidget {
           );
         }
         final messages = snapshot.data.docs;
-        List<SwipeTo> messageBubbles = [];
+        List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
           final messageText = message['text'];
           final messageSender = message['sender'];
 
           final currentUser = loggedInUser.email;
 
-          final messageBubble = SwipeTo(
-            // onRightSwipe: ()=>onSwipedMessage(messageText),
-              child: MessageBubble(
+          final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
             isMe: currentUser == messageSender,
-          )
           );
 
           messageBubbles.add(messageBubble);
